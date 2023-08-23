@@ -1,0 +1,84 @@
+apiVersion: v1
+entries:
+  elasticsearch:
+  - apiVersion: v1
+    appVersion: 7.13.4
+    created: "2023-08-23T12:49:45.1979251+08:00"
+    description: Official Elastic helm chart for Elasticsearch
+    digest: 0eed528321b81c518e81357b39719022017b3a511aab775ecaab6d6416b41d43
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/elasticsearch.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: elasticsearch
+    sources:
+    - https://github.com/elastic/elasticsearch
+    urls:
+    - https://github.com/nejinn/skywalking-helm/tree/master/chart/skywalking/charts/elasticsearch-7.13.4.tgz
+    version: 7.13.4
+  postgresql:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 15.1.0
+    created: "2023-08-23T12:49:45.2024917+08:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: PostgreSQL (Postgres) is an open source object-relational database
+      known for reliability and data integrity. ACID-compliant, it supports foreign
+      keys, joins, views, triggers and stored procedures.
+    digest: 6706df44c06603a6e43d8ff250e5587e2d9223518259825d73ba4f98b1ef0ea7
+    home: https://github.com/bitnami/charts/tree/main/bitnami/postgresql
+    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    maintainers:
+    - name: Bitnami
+      url: https://github.com/bitnami/charts
+    name: postgresql
+    sources:
+    - https://github.com/bitnami/containers/tree/main/bitnami/postgresql
+    - https://www.postgresql.org/
+    urls:
+    - https://github.com/nejinn/skywalking-helm/tree/master/chart/skywalking/charts/postgresql-12.1.2.tgz
+    version: 12.1.2
+  skywalking-helm:
+  - apiVersion: v2
+    created: "2023-08-23T12:49:45.1969268+08:00"
+    dependencies:
+    - condition: elasticsearch.enabled
+      name: elasticsearch
+      repository: https://helm.elastic.co/
+      version: ~7.13.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.2
+    description: Helm Chart for Apache SkyWalking
+    digest: 59ff19c1e3b5d9ea989fa6c0dfffcac2fccb13cdb1bbaeeaecf72221c339f780
+    home: https://skywalking.apache.org
+    icon: https://raw.githubusercontent.com/apache/skywalking-kubernetes/master/logo/sw-logo-for-chart.jpg
+    maintainers:
+    - email: hanahmily@gmail.com
+      name: hanahmily
+    - email: innerpeace.zhai@gmail.com
+      name: innerpeacez
+    - email: kezhenxu94@163.com
+      name: kezhenxu94
+    name: skywalking-helm
+    sources:
+    - https://github.com/apache/skywalking-kubernetes
+    urls:
+    - https://github.com/nejinn/skywalking-helm/tree/master/chart/skywalking/skywalking-helm-4.5.0.tgz
+    version: 4.5.0
+generated: "2023-08-23T12:49:45.1908704+08:00"
