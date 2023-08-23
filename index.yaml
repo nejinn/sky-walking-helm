@@ -23,6 +23,6 @@ entries:
     sources:
     - https://github.com/apache/skywalking-kubernetes
     urls:
-    - https:https://github.com/nejinn/sky-walking-helm
+    - https://github.com/nejinn/sky-walking-helm
     version: 4.5.0
 generated: "2023-08-23T15:06:44.8698752+08:00"
