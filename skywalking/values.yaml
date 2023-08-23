@@ -33,9 +33,9 @@ oap:
   name: oap
   image:
     repository: skywalking.docker.scarf.sh/apache/skywalking-oap-server
-    tag: 9.5.0  # Must be set explicitly
+    tag: null  # Must be set explicitly
     pullPolicy: IfNotPresent
-  storageType: elasticsearch
+  storageType: null
   ports:
     # add more ports here if you need, for example
     # zabbix: 10051
@@ -125,7 +125,7 @@ ui:
   replicas: 1
   image:
     repository: skywalking.docker.scarf.sh/apache/skywalking-ui
-    tag: 9.5.0  # Must be set explicitly
+    tag: null  # Must be set explicitly
     pullPolicy: IfNotPresent
   # podAnnotations:
   #   example: oap-foo
@@ -182,13 +182,13 @@ oapInit:
   # sidecar.istio.io/inject: false
 
 elasticsearch:
-  enabled: false
+  enabled: true
   config:               # For users of an existing elasticsearch cluster,takes effect when `elasticsearch.enabled` is false
     port:
       http: 9200
-    host: elasticsearch-v1-0.elasticsearch.es.svc.cluster.local
-    password: iYqREJAJEhPtkSAXoFPq
-    user: elastic         # [optional]
+    host: elasticsearch # es service on kubernetes or host
+    user: "xxx"         # [optional]
+    password: "xxx"     # [optional]
   clusterName: "elasticsearch"
   nodeGroup: "master"
 
@@ -447,10 +447,10 @@ postgresql:
 satellite:
   name: satellite
   replicas: 1
-  enabled: true
+  enabled: false
   image:
     repository: skywalking.docker.scarf.sh/apache/skywalking-satellite
-    tag: v1.1.0 # Must be set explicitly
+    tag: null # Must be set explicitly
     pullPolicy: IfNotPresent
   ports:
     grpc: 11800
